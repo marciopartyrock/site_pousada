@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pousada Muiraquitã | Experiência Amazônica em Parintins</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --amazon-green: #1a3c34;
+            --amazon-light: #2d5a4e;
+            --terracotta: #c75b39;
+            --sand: #f5f1eb;
+            --cream: #faf8f5;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--terracotta);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--amazon-green);
+        }
+
+        .btn-primary {
+            background: var(--amazon-green);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: 2px solid var(--amazon-green);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--amazon-green);
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--amazon-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(26, 60, 52, 0.7), rgba(26, 60, 52, 0.5)), url('img/fachada.png') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, var(--cream), transparent);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--amazon-green);
+            font-size: 1.5rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Features Section - Domino Effect Right to Left */
+        .features {
+            padding: 4rem 5%;
+            background: var(--cream);
+            overflow: hidden;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateX(100px);
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--sand);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: var(--terracotta);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--amazon-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* About Section - Typewriter Effect */
+        .about {
+            padding: 6rem 5%;
+            background: white;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            color: var(--terracotta);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--amazon-green);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .about-text p.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .typewriter-text {
+            overflow: hidden;
+            border-right: 3px solid var(--terracotta);
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+            display: inline-block;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--terracotta) }
+        }
+
+        .about-image {
+            position: relative;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease;
+        }
+
+        .about-image.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: var(--terracotta);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .experience-badge .number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+
+        .experience-badge .text {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Suites Section - Domino Effect Left to Right */
+        .suites {
+            padding: 6rem 5%;
+            background: var(--sand);
+            overflow: hidden;
+        }
+
+        .suites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+
+        .suite-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+
+        .suite-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .suite-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .suite-card.expanded {
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+        .suite-image {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .suite-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .suite-card:hover .suite-image img {
+            transform: scale(1.05);
+        }
+
+        .suite-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--terracotta);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .suite-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 2rem 1.5rem 1.5rem;
+            color: white;
+        }
+
+        .suite-overlay h3 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .suite-overlay p {
+            margin: 0.5rem 0 0;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .suite-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.3s ease;
+            background: white;
+            opacity: 0;
+        }
+
+        .suite-card.expanded .suite-content {
+            max-height: 600px;
+            padding: 2rem;
+            opacity: 1;
+        }
+
+        .suite-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .suite-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .suite-feature i {
+            color: var(--terracotta);
+            width: 20px;
+        }
+
+        .suite-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-suite {
+            display: none;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--amazon-green);
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .suite-card.expanded .close-suite {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Reservation Section */
+        .reservation {
+            padding: 6rem 5%;
+            background: linear-gradient(to bottom, var(--cream), white);
+            min-height: 100vh;
+        }
+
+        .reservation-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            box-shadow: var(--shadow-hover);
+            overflow: hidden;
+        }
+
+        .reservation-header {
+            background: var(--amazon-green);
+            color: white;
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .reservation-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .reservation-header p {
+            opacity: 0.9;
+        }
+
+        .reservation-form {
+            padding: 3rem;
+        }
+
+        .step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .step-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--sand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--text-light);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .step-dot.active {
+            background: var(--amazon-green);
+            color: white;
+        }
+
+        .step-dot.completed {
+            background: var(--terracotta);
+            color: white;
+        }
+
+        .step-dot::after {
+            content: '';
+            position: absolute;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2rem;
+            height: 2px;
+            background: var(--sand);
+        }
+
+        .step-dot:last-child::after {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--sand);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+            background: var(--cream);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--amazon-green);
+            background: white;
+        }
+
+        .guest-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .guest-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--amazon-green);
+            background: white;
+            color: var(--amazon-green);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .guest-btn:hover {
+            background: var(--amazon-green);
+            color: white;
+        }
+
+        .guest-count {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--amazon-green);
+            min-width: 80px;
+            text-align: center;
+        }
+
+        /* Booking Calendar Style */
+        .booking-calendar-container {
+            background: white;
+            border-radius: 20px;
+            border: 2px solid var(--sand);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--sand);
+            border-bottom: 2px solid var(--sand);
+        }
+
+        .calendar-nav {
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--amazon-green);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-nav:hover {
+            background: var(--amazon-green);
+            color: white;
+        }
+
+        .calendar-month-year {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--amazon-green);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: var(--sand);
+        }
+
+        .calendar-day-header {
+            background: white;
+            padding: 1rem 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .calendar-day {
+            background: white;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .calendar-day:hover:not(.disabled):not(.selected) {
+            background: var(--sand);
+        }
+
+        .calendar-day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+            background: #f9f9f9;
+        }
+
+        .calendar-day.selected {
+            background: var(--amazon-green);
+            color: white;
+        }
+
+        .calendar-day.checkin {
+            background: var(--amazon-green);
+            color: white;
+            border-radius: 50% 0 0 50%;
+        }
+
+        .calendar-day.checkout {
+            background: var(--amazon-green);
+            color: white;
+            border-radius: 0 50% 50% 0;
+        }
+
+        .calendar-day.in-range {
+            background: var(--amazon-light);
+            color: white;
+        }
+
+        .calendar-day.today {
+            font-weight: 700;
+            color: var(--terracotta);
+        }
+
+        .calendar-day .price {
+            position: absolute;
+            bottom: 2px;
+            font-size: 0.7rem;
+            opacity: 0.7;
+        }
+
+        .selected-dates-display {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--sand);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .date-display-box {
+            text-align: center;
+            flex: 1;
+        }
+
+        .date-display-box label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .date-display-box .date-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--amazon-green);
+        }
+
+        .date-arrow {
+            font-size: 1.5rem;
+            color: var(--terracotta);
+            padding: 0 2rem;
+        }
+
+        /* Time Wheel - Fixed */
+        .time-wheels-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .time-wheel-wrapper {
+            text-align: center;
+        }
+
+        .time-wheel-wrapper label {
+            display: block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .time-wheel {
+            height: 200px;
+            overflow-y: scroll;
+            position: relative;
+            background: white;
+            border-radius: 15px;
+            border: 2px solid var(--sand);
+            scroll-snap-type: y mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .time-wheel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .time-wheel::before,
+        .time-wheel::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 80px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .time-wheel::before {
+            top: 0;
+            background: linear-gradient(to bottom, white, transparent);
+        }
+
+        .time-wheel::after {
+            bottom: 0;
+            background: linear-gradient(to top, white, transparent);
+        }
+
+        .time-wheel-inner {
+            padding: 80px 0;
+        }
+
+        .time-option-wheel {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s;
+            scroll-snap-align: center;
+            user-select: none;
+        }
+
+        .time-option-wheel:hover {
+            color: var(--amazon-green);
+            background: var(--sand);
+        }
+
+        .time-option-wheel.selected {
+            color: var(--amazon-green);
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: transparent;
+        }
+
+        .time-wheel-center {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            height: 40px;
+            border-top: 2px solid var(--terracotta);
+            border-bottom: 2px solid var(--terracotta);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            gap: 1rem;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: 2px solid var(--sand);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--amazon-green);
+            color: var(--amazon-green);
+        }
+
+        .btn-nav {
+            background: var(--amazon-green);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-nav:hover {
+            background: var(--amazon-light);
+            transform: translateX(5px);
+        }
+
+        .btn-nav.prev:hover {
+            transform: translateX(-5px);
+        }
+
+        .summary-box {
+            background: var(--sand);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .summary-label {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .summary-value {
+            font-weight: 700;
+            color: var(--amazon-green);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--amazon-green);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--sand);
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 2;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--terracotta);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--terracotta);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .experience-badge {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -10px;
+            }
+
+            .time-wheels-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .reservation-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .guest-selector {
+                gap: 1rem;
+            }
+
+            .guest-count {
+                font-size: 2.5rem;
+            }
+
+            .selected-dates-display {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .date-arrow {
+                transform: rotate(90deg);
+                padding: 0;
+            }
+
+            .calendar-day {
+                min-height: 45px;
+                font-size: 0.9rem;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: white;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- WhatsApp Float Button -->
+    <a href="#" class="whatsapp-float" onclick="openWhatsAppInfo(); return false;" title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header id="header">
+        <div class="logo">
+            <img src="img/logo.png" alt="Pousada Muiraquitã">
+        </div>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#sobre">A Pousada</a>
+            <a href="#suites">Suítes</a>
+            <a href="#reserva" class="btn-primary">
+                <i class="fas fa-calendar-check"></i>
+                Reservar
+            </a>
+        </nav>
+        <div class="mobile-menu" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <span class="hero-badge">Bem-vindo à Amazônia</span>
+            <h1>Descanse no Coração de Parintins</h1>
+            <p>Experimente o verdadeiro charme amazônico com conforto, hospitalidade e tradição na Pousada Muiraquitã.</p>
+            <a href="#reserva" class="btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">
+                Reserve sua Estadia
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-card" data-delay="0">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Localização Privilegiada</h3>
+                <p>A apenas 250m do Bumbódromo, no coração da cidade.</p>
+            </div>
+            <div class="feature-card" data-delay="1">
+                <div class="feature-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h3>Wi-Fi Gratuito</h3>
+                <p>Conexão de alta velocidade em todas as áreas da pousada.</p>
+            </div>
+            <div class="feature-card" data-delay="2">
+                <div class="feature-icon">
+                    <i class="fas fa-snowflake"></i>
+                </div>
+                <h3>Ar Condicionado</h3>
+                <p>Todas as suítes equipadas com ar split para seu conforto.</p>
+            </div>
+            <div class="feature-card" data-delay="3">
+                <div class="feature-icon">
+                    <i class="fas fa-coffee"></i>
+                </div>
+                <h3>Café da Manhã</h3>
+                <p>Delicioso café regional incluso em todas as diárias.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nossa História</span>
+                <h2 class="section-title">Tradição e Acolhimento</h2>
+                <p class="section-subtitle">Uma experiência única de hospitalidade amazônica</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="typewriter-para" data-text="A Pousada Muiraquitã nasceu do sonho de oferecer aos visitantes de Parintins uma experiência autêntica de acolhimento. Nosso nome homenageia o famoso amuleto indígena, símbolo de proteção e sorte na cultura amazônica.">
+                        A Pousada Muiraquitã nasceu do sonho de oferecer aos visitantes de Parintins uma experiência autêntica de acolhimento. Nosso nome homenageia o famoso amuleto indígena, símbolo de proteção e sorte na cultura amazônica.
+                    </p>
+                    <p class="typewriter-para" data-text="Localizada estrategicamente próximo ao Bumbódromo, somos a escolha perfeita para quem deseja vivenciar o Festival Folclórico de Parintins com conforto e praticidade. Nossa estrutura combina o charme rústico da região com todas as comodidades modernas.">
+                        Localizada estrategicamente próximo ao Bumbódromo, somos a escolha perfeita para quem deseja vivenciar o Festival Folclórico de Parintins com conforto e praticidade. Nossa estrutura combina o charme rústico da região com todas as comodidades modernas.
+                    </p>
+                    <p class="typewriter-para" data-text="Cada detalhe foi pensado para que você se sinta em casa: desde nossa decoração inspirada na cultura local até o atendimento caloroso de nossa equipe, sempre pronta para tornar sua estadia inesquecível.">
+                        Cada detalhe foi pensado para que você se sinta em casa: desde nossa decoração inspirada na cultura local até o atendimento caloroso de nossa equipe, sempre pronta para tornar sua estadia inesquecível.
+                    </p>
+                    <a href="#reserva" class="btn-primary" style="margin-top: 1rem; opacity: 0; transform: translateY(20px); transition: all 0.6s ease;" id="about-btn">
+                        Fazer Reserva
+                    </a>
+                </div>
+                <div class="about-image">
+                    <img src="img/interior.png" alt="Interior da Pousada">
+                    <div class="experience-badge">
+                        <span class="number">3+</span>
+                        <span class="text">Anos de<br>Experiência</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="suites" id="suites">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Acomodações</span>
+                <h2 class="section-title">Nossas Suítes</h2>
+                <p class="section-subtitle">Clique nos cards para ver os detalhes</p>
+            </div>
+            <div class="suites-grid">
+                <div class="suite-card" onclick="toggleSuite(this)" data-delay="0">
+                    <button class="close-suite" onclick="event.stopPropagation(); toggleSuite(this.parentElement)">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="suite-image">
+                        <img src="img/suite1.png" alt="Suíte Clássica">
+                        <span class="suite-badge">Família</span>
+                        <div class="suite-overlay">
+                            <h3>Suíte Clássica</h3>
+                            <p>Clique para ver detalhes</p>
+                        </div>
+                    </div>
+                    <div class="suite-content">
+                        <p class="suite-description">
+                            Nossa Suíte Clássica é perfeita para famílias ou grupos de amigos, oferecendo espaço generoso e conforto incomparável. Com capacidade para até 4 pessoas, é ideal para quem busca praticidade sem abrir mão do aconchego.
+                        </p>
+                        <div class="suite-features">
+                            <div class="suite-feature">
+                                <i class="fas fa-bed"></i>
+                                <span>1 Casal + 2 Solteiros</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-user"></i>
+                                <span>4 Pessoas</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-snowflake"></i>
+                                <span>Frigobar</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-tv"></i>
+                                <span>TV Smart</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-wind"></i>
+                                <span>Ar Split</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-door-closed"></i>
+                                <span>Armário</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-couch"></i>
+                                <span>Poltrona</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-chair"></i>
+                                <span>Mesa com Cadeira</span>
+                            </div>
+                        </div>
+                        <a href="#reserva" class="btn-primary" style="width: 100%; justify-content: center;" onclick="event.stopPropagation()">
+                            Reservar Esta Suíte
+                        </a>
+                    </div>
+                </div>
+
+                <div class="suite-card" onclick="toggleSuite(this)" data-delay="1">
+                    <button class="close-suite" onclick="event.stopPropagation(); toggleSuite(this.parentElement)">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="suite-image">
+                        <img src="img/suite2.png" alt="Suíte Dupla">
+                        <span class="suite-badge">Casal</span>
+                        <div class="suite-overlay">
+                            <h3>Suíte Dupla</h3>
+                            <p>Clique para ver detalhes</p>
+                        </div>
+                    </div>
+                    <div class="suite-content">
+                        <p class="suite-description">
+                            Perfeita para casais que buscam intimidade e conforto. A Suíte Dupla oferece um ambiente aconchegante e romântico, ideal para escapadas de fim de semana ou estadias prolongadas em Parintins.
+                        </p>
+                        <div class="suite-features">
+                            <div class="suite-feature">
+                                <i class="fas fa-bed"></i>
+                                <span>1 Cama de Casal</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-user"></i>
+                                <span>2 Pessoas</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-snowflake"></i>
+                                <span>Frigobar</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-tv"></i>
+                                <span>TV Smart</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-wind"></i>
+                                <span>Ar Split</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-door-closed"></i>
+                                <span>Armário</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-chair"></i>
+                                <span>Mesa com Cadeira</span>
+                            </div>
+                        </div>
+                        <a href="#reserva" class="btn-primary" style="width: 100%; justify-content: center;" onclick="event.stopPropagation()">
+                            Reservar Esta Suíte
+                        </a>
+                    </div>
+                </div>
+
+                <div class="suite-card" onclick="toggleSuite(this)" data-delay="2">
+                    <button class="close-suite" onclick="event.stopPropagation(); toggleSuite(this.parentElement)">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="suite-image">
+                        <img src="img/suite3.png" alt="Suíte Tripla">
+                        <span class="suite-badge">Grupos</span>
+                        <div class="suite-overlay">
+                            <h3>Suíte Tripla</h3>
+                            <p>Clique para ver detalhes</p>
+                        </div>
+                    </div>
+                    <div class="suite-content">
+                        <p class="suite-description">
+                            Versátil e confortável, a Suíte Tripla é a escolha ideal para pequenos grupos ou famílias com até 3 membros. Combina praticidade com todo o conforto que você merece durante sua estadia.
+                        </p>
+                        <div class="suite-features">
+                            <div class="suite-feature">
+                                <i class="fas fa-bed"></i>
+                                <span>1 Casal + 1 Solteiro</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-user"></i>
+                                <span>3 Pessoas</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-snowflake"></i>
+                                <span>Frigobar</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-tv"></i>
+                                <span>TV Smart</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-wind"></i>
+                                <span>Ar Split</span>
+                            </div>
+                            <div class="suite-feature">
+                                <i class="fas fa-door-closed"></i>
+                                <span>Armário</span>
+                            </div>
+                        </div>
+                        <a href="#reserva" class="btn-primary" style="width: 100%; justify-content: center;" onclick="event.stopPropagation()">
+                            Reservar Esta Suíte
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reservation" id="reserva">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Reserve Agora</span>
+                <h2 class="section-title">Faça sua Reserva</h2>
+                <p class="section-subtitle">Preencha os dados abaixo e envie seu pedido via WhatsApp</p>
+            </div>
+
+            <div class="reservation-container">
+                <div class="reservation-header">
+                    <h2>Reserva Rápida</h2>
+                    <p>Complete em poucos passos</p>
+                </div>
+
+                <div class="reservation-form">
+                    <div class="step-indicator">
+                        <div class="step-dot active" id="dot-1">1</div>
+                        <div class="step-dot" id="dot-2">2</div>
+                        <div class="step-dot" id="dot-3">3</div>
+                        <div class="step-dot" id="dot-4">4</div>
+                    </div>
+
+                    <!-- Step 1: Guests -->
+                    <div class="step active" id="step-1">
+                        <div class="form-group" style="text-align: center;">
+                            <label>Quantas pessoas?</label>
+                            <div class="guest-selector">
+                                <button class="guest-btn" onclick="updateGuests(-1)">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <div class="guest-count" id="guest-count">2</div>
+                                <button class="guest-btn" onclick="updateGuests(1)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <p style="color: var(--text-light); margin-top: 1rem;">
+                                <i class="fas fa-info-circle"></i>
+                                Selecione o número total de hóspedes
+                            </p>
+                        </div>
+                        <div class="navigation-buttons">
+                            <div></div>
+                            <button class="btn-nav" onclick="nextStep()">
+                                Próximo
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Dates (Booking Style) -->
+                    <div class="step" id="step-2">
+                        <div class="selected-dates-display">
+                            <div class="date-display-box">
+                                <label>Check-in</label>
+                                <div class="date-value" id="display-checkin">Selecione</div>
+                            </div>
+                            <div class="date-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="date-display-box">
+                                <label>Check-out</label>
+                                <div class="date-value" id="display-checkout">Selecione</div>
+                            </div>
+                        </div>
+
+                        <div class="booking-calendar-container">
+                            <div class="calendar-header">
+                                <button class="calendar-nav" onclick="changeMonth(-1)">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="calendar-month-year" id="calendar-month-year"></div>
+                                <button class="calendar-nav" onclick="changeMonth(1)">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <div class="calendar-grid" id="calendar-grid">
+                                <!-- Generated by JS -->
+                            </div>
+                        </div>
+
+                        <div class="navigation-buttons">
+                            <button class="btn-nav prev" onclick="prevStep()">
+                                <i class="fas fa-arrow-left"></i>
+                                Voltar
+                            </button>
+                            <button class="btn-nav" onclick="nextStep()">
+                                Próximo
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Time Wheels - Fixed -->
+                    <div class="step" id="step-3">
+                        <div class="time-wheels-container">
+                            <div class="time-wheel-wrapper">
+                                <label>Horário de Check-in</label>
+                                <div class="time-wheel" id="checkin-wheel">
+                                    <div class="time-wheel-center"></div>
+                                    <div class="time-wheel-inner" id="checkin-wheel-inner">
+                                        <!-- Generated by JS -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="time-wheel-wrapper">
+                                <label>Horário de Check-out</label>
+                                <div class="time-wheel" id="checkout-wheel">
+                                    <div class="time-wheel-center"></div>
+                                    <div class="time-wheel-inner" id="checkout-wheel-inner">
+                                        <!-- Generated by JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="navigation-buttons">
+                            <button class="btn-nav prev" onclick="prevStep()">
+                                <i class="fas fa-arrow-left"></i>
+                                Voltar
+                            </button>
+                            <button class="btn-nav" onclick="nextStep()">
+                                Próximo
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Summary & Submit -->
+                    <div class="step" id="step-4">
+                        <div class="summary-box">
+                            <h3 style="margin-bottom: 1.5rem; color: var(--amazon-green);">Resumo da Reserva</h3>
+                            <div class="summary-item">
+                                <span class="summary-label">Número de Hóspedes</span>
+                                <span class="summary-value" id="summary-guests">2 pessoas</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Data de Check-in</span>
+                                <span class="summary-value" id="summary-checkin">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Data de Check-out</span>
+                                <span class="summary-value" id="summary-checkout">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Horário Check-in</span>
+                                <span class="summary-value" id="summary-checkin-time">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Horário Check-out</span>
+                                <span class="summary-value" id="summary-checkout-time">-</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nome Completo</label>
+                            <input type="text" class="form-control" id="guest-name" placeholder="Digite seu nome completo" required>
+                        </div>
+
+                        <div class="navigation-buttons">
+                            <button class="btn-nav prev" onclick="prevStep()">
+                                <i class="fas fa-arrow-left"></i>
+                                Voltar
+                            </button>
+                            <button class="btn-whatsapp" onclick="sendReservation()">
+                                <i class="fab fa-whatsapp"></i>
+                                Enviar Reserva para Análise
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Success Step -->
+                    <div class="step" id="step-success">
+                        <div class="success-message">
+                            <div class="success-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <h3 style="color: var(--amazon-green); margin-bottom: 1rem; font-size: 2rem;">Reserva Enviada!</h3>
+                            <p style="color: var(--text-light); margin-bottom: 2rem;">
+                                Você será redirecionado para o WhatsApp para confirmar sua reserva com nossa equipe.
+                            </p>
+                            <button class="btn-secondary" onclick="resetForm()">
+                                Fazer Nova Reserva
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Pousada Muiraquitã</h3>
+                <p>Experiência amazônica de hospitalidade e conforto no coração de Parintins.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>
+                    <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
+                    Rua 7 de Setembro, 25 - Palmares<br>
+                    Parintins - AM, 69153-040
+                </p>
+                <p>
+                    <i class="fas fa-phone" style="margin-right: 0.5rem;"></i>
+                    (92) 95991-2436-17
+                </p>
+                <p>
+                    <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
+                    contato@muiraquita.com.br
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <p><a href="#inicio">Início</a></p>
+                <p><a href="#sobre">A Pousada</a></p>
+                <p><a href="#suites">Suítes</a></p>
+                <p><a href="#reserva">Reservas</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Localização</h3>
+                <p style="font-size: 0.9rem; line-height: 1.8;">
+                    <i class="fas fa-walking" style="margin-right: 0.5rem; color: var(--terracotta);"></i>
+                    Apenas 250 metros do Bumbódromo<br><br>
+                    <em>"No coração da cultura, a poucos passos da emoção."</em>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pousada Muiraquitã Parintins. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        let guests = 2;
+        let checkinDate = null;
+        let checkoutDate = null;
+        let checkinTime = '';
+        let checkoutTime = '';
+        let currentMonth = new Date();
+        let selectingCheckin = true;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initCalendar();
+            initTimeWheels();
+            initScrollAnimations();
+        });
+
+        // Scroll Animations
+        function initScrollAnimations() {
+            // Feature cards - Right to Left (Domino inverted)
+            const featureCards = document.querySelectorAll('.feature-card');
+            const featureObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const delay = parseInt(entry.target.dataset.delay) * 150;
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, delay);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            featureCards.forEach(card => featureObserver.observe(card));
+
+            // About section - Typewriter effect
+            const aboutParas = document.querySelectorAll('.typewriter-para');
+            const aboutImage = document.querySelector('.about-image');
+            const aboutBtn = document.getElementById('about-btn');
+            
+            const aboutObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('typewriter-para')) {
+                            setTimeout(() => {
+                                entry.target.classList.add('visible');
+                            }, 300);
+                        } else if (entry.target.classList.contains('about-image')) {
+                            entry.target.classList.add('visible');
+                        } else if (entry.target.id === 'about-btn') {
+                            setTimeout(() => {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                            }, 1200);
+                        }
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            aboutParas.forEach(para => aboutObserver.observe(para));
+            aboutObserver.observe(aboutImage);
+            aboutObserver.observe(aboutBtn);
+
+            // Suite cards - Left to Right (Domino)
+            const suiteCards = document.querySelectorAll('.suite-card');
+            const suiteObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = parseInt(entry.target.dataset.delay) * 200;
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, delay);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            suiteCards.forEach(card => suiteObserver.observe(card));
+        }
+
+        function updateGuests(change) {
+            guests += change;
+            if (guests < 1) guests = 1;
+            if (guests > 8) guests = 8;
+            document.getElementById('guest-count').textContent = guests;
+        }
+
+        function nextStep() {
+            if (currentStep === 2) {
+                if (!checkinDate || !checkoutDate) {
+                    alert('Por favor, selecione as datas de check-in e check-out.');
+                    return;
+                }
+            }
+
+            if (currentStep === 3) {
+                if (!checkinTime || !checkoutTime) {
+                    alert('Por favor, selecione os horários de check-in e check-out.');
+                    return;
+                }
+            }
+
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            document.getElementById(`dot-${currentStep}`).classList.remove('active');
+            document.getElementById(`dot-${currentStep}`).classList.add('completed');
+            
+            currentStep++;
+            
+            if (currentStep <= 4) {
+                document.getElementById(`step-${currentStep}`).classList.add('active');
+                document.getElementById(`dot-${currentStep}`).classList.add('active');
+            }
+
+            if (currentStep === 4) {
+                updateSummary();
+            }
+        }
+
+        function prevStep() {
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            document.getElementById(`dot-${currentStep}`).classList.remove('active');
+            
+            currentStep--;
+            
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            document.getElementById(`dot-${currentStep}`).classList.remove('completed');
+            document.getElementById(`dot-${currentStep}`).classList.add('active');
+        }
+
+        // Calendar Functions
+        function initCalendar() {
+            renderCalendar();
+        }
+
+        function renderCalendar() {
+            const year = currentMonth.getFullYear();
+            const month = currentMonth.getMonth();
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            const monthNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
+                               'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+            
+            document.getElementById('calendar-month-year').textContent = `${monthNames[month]} ${year}`;
+            
+            const grid = document.getElementById('calendar-grid');
+            grid.innerHTML = '';
+            
+            // Day headers
+            const dayHeaders = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+            dayHeaders.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'calendar-day-header';
+                header.textContent = day;
+                grid.appendChild(header);
+            });
+            
+            // Empty cells
+            for (let i = 0; i < firstDay; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'calendar-day disabled';
+                grid.appendChild(empty);
+            }
+            
+            // Days
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(year, month, day);
+                const cell = document.createElement('div');
+                cell.className = 'calendar-day';
+                cell.textContent = day;
+                
+                if (date < today) {
+                    cell.classList.add('disabled');
+                } else {
+                    cell.onclick = () => selectDate(date);
+                    
+                    // Check if selected
+                    if (checkinDate && date.getTime() === checkinDate.getTime()) {
+                        cell.classList.add('checkin');
+                    }
+                    if (checkoutDate && date.getTime() === checkoutDate.getTime()) {
+                        cell.classList.add('checkout');
+                    }
+                    if (checkinDate && checkoutDate && date > checkinDate && date < checkoutDate) {
+                        cell.classList.add('in-range');
+                    }
+                    if (date.getTime() === today.getTime()) {
+                        cell.classList.add('today');
+                    }
+                }
+                
+                grid.appendChild(cell);
+            }
+        }
+
+        function changeMonth(delta) {
+            currentMonth.setMonth(currentMonth.getMonth() + delta);
+            renderCalendar();
+        }
+
+        function selectDate(date) {
+            if (selectingCheckin || (checkinDate && checkoutDate)) {
+                checkinDate = date;
+                checkoutDate = null;
+                selectingCheckin = false;
+                document.getElementById('display-checkin').textContent = formatDateBR(date);
+                document.getElementById('display-checkout').textContent = 'Selecione';
+            } else {
+                if (date <= checkinDate) {
+                    alert('A data de check-out deve ser posterior ao check-in.');
+                    return;
+                }
+                checkoutDate = date;
+                document.getElementById('display-checkout').textContent = formatDateBR(date);
+                selectingCheckin = true;
+            }
+            renderCalendar();
+        }
+
+        function formatDateBR(date) {
+            return date.toLocaleDateString('pt-BR');
+        }
+
+        // Time Wheel Functions - Fixed with proper scrolling
+        function initTimeWheels() {
+            const checkinWheel = document.getElementById('checkin-wheel-inner');
+            const checkoutWheel = document.getElementById('checkout-wheel-inner');
+            
+            // Generate hours from 00:00 to 23:00
+            for (let i = 0; i < 24; i++) {
+                const time = `${i.toString().padStart(2, '0')}:00`;
+                
+                const checkinOption = createTimeOption(time, 'checkin');
+                checkinWheel.appendChild(checkinOption);
+                
+                const checkoutOption = createTimeOption(time, 'checkout');
+                checkoutWheel.appendChild(checkoutOption);
+            }
+            
+            // Setup scroll listeners with proper handling
+            setupWheelScroll('checkin-wheel', 'checkin');
+            setupWheelScroll('checkout-wheel', 'checkout');
+        }
+
+        function createTimeOption(time, type) {
+            const div = document.createElement('div');
+            div.className = 'time-option-wheel';
+            div.textContent = time;
+            div.dataset.time = time;
+            return div;
+        }
+
+        function setupWheelScroll(wheelId, type) {
+            const wheel = document.getElementById(wheelId);
+            let isScrolling;
+            
+            wheel.addEventListener('scroll', () => {
+                clearTimeout(isScrolling);
+                isScrolling = setTimeout(() => {
+                    updateWheelSelection(wheel, type);
+                }, 50);
+            });
+            
+            // Also update on scroll start for smoother feel
+            wheel.addEventListener('scroll', () => {
+                requestAnimationFrame(() => {
+                    updateWheelSelection(wheel, type);
+                });
+            });
+            
+            // Initial selection
+            setTimeout(() => {
+                updateWheelSelection(wheel, type);
+            }, 100);
+        }
+
+        function updateWheelSelection(wheel, type) {
+            const scrollTop = wheel.scrollTop;
+            const itemHeight = 40;
+            const centerOffset = wheel.offsetHeight / 2;
+            const selectedIndex = Math.round((scrollTop + centerOffset - itemHeight / 2) / itemHeight);
+            const options = wheel.querySelectorAll('.time-option-wheel');
+            
+            options.forEach((opt, idx) => {
+                opt.classList.remove('selected');
+                if (idx === selectedIndex) {
+                    opt.classList.add('selected');
+                    if (type === 'checkin') {
+                        checkinTime = opt.dataset.time;
+                    } else {
+                        checkoutTime = opt.dataset.time;
+                    }
+                }
+            });
+        }
+
+        function updateSummary() {
+            document.getElementById('summary-guests').textContent = guests + (guests === 1 ? ' pessoa' : ' pessoas');
+            document.getElementById('summary-checkin').textContent = formatDateBR(checkinDate);
+            document.getElementById('summary-checkout').textContent = formatDateBR(checkoutDate);
+            document.getElementById('summary-checkin-time').textContent = checkinTime;
+            document.getElementById('summary-checkout-time').textContent = checkoutTime;
+        }
+
+        function sendReservation() {
+            const name = document.getElementById('guest-name').value;
+            
+            if (!name.trim()) {
+                alert('Por favor, digite seu nome completo.');
+                return;
+            }
+
+            const message = `*Nova Reserva - Pousada Muiraquitã*%0A%0A` +
+                           `*Nome:* ${name}%0A` +
+                           `*Hóspedes:* ${guests} ${guests === 1 ? 'pessoa' : 'pessoas'}%0A` +
+                           `*Check-in:* ${formatDateBR(checkinDate)} às ${checkinTime}%0A` +
+                           `*Check-out:* ${formatDateBR(checkoutDate)} às ${checkoutTime}%0A%0A` +
+                           `Aguardo confirmação de disponibilidade.`;
+
+            const phone = '5595991243617';
+            const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
+            
+            // Show success step
+            document.getElementById('step-4').classList.remove('active');
+            document.getElementById('step-success').classList.add('active');
+            
+            // Open WhatsApp in same tab after delay
+            setTimeout(() => {
+                window.location.href = whatsappUrl;
+            }, 1500);
+        }
+
+        function openWhatsAppInfo() {
+            const message = `Olá! Gostaria de saber mais informações sobre a Pousada!`;
+            const phone = '5595991243617';
+            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.location.href = whatsappUrl;
+        }
+
+        function resetForm() {
+            currentStep = 1;
+            guests = 2;
+            checkinDate = null;
+            checkoutDate = null;
+            checkinTime = '';
+            checkoutTime = '';
+            selectingCheckin = true;
+            
+            document.getElementById('guest-count').textContent = '2';
+            document.getElementById('display-checkin').textContent = 'Selecione';
+            document.getElementById('display-checkout').textContent = 'Selecione';
+            document.getElementById('guest-name').value = '';
+            
+            document.querySelectorAll('.time-option-wheel').forEach(o => o.classList.remove('selected'));
+            
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.step-dot').forEach(d => {
+                d.classList.remove('active', 'completed');
+            });
+            
+            document.getElementById('step-1').classList.add('active');
+            document.getElementById('dot-1').classList.add('active');
+            
+            renderCalendar();
+        }
+
+        // Suite Toggle - Fixed bug
+        function toggleSuite(card) {
+            const isExpanded = card.classList.contains('expanded');
+            const allCards = document.querySelectorAll('.suite-card');
+            
+            // Close all cards first
+            allCards.forEach(c => {
+                c.classList.remove('expanded');
+                c.style.gridRow = '';
+            });
+            
+            // If clicking the same expanded card, just close it (already done above)
+            // If clicking a different card or closed card, expand it
+            if (!isExpanded) {
+                card.classList.add('expanded');
+            }
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            }
+        });
+
+        function toggleMenu() {
+            alert('Menu mobile em desenvolvimento. Use a rolagem para navegar.');
+        }
+    </script>
+</body>
+</html>
