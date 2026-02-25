@@ -256,7 +256,7 @@
             60% { transform: translateX(-50%) translateY(-5px); }
         }
 
-        /* Features Section - Domino Effect Right to Left */
+        /* Features Section */
         .features {
             padding: 4rem 5%;
             background: var(--cream);
@@ -317,7 +317,7 @@
             font-size: 0.95rem;
         }
 
-        /* About Section - Typewriter Effect */
+        /* About Section */
         .about {
             padding: 6rem 5%;
             background: white;
@@ -379,24 +379,6 @@
             transform: translateY(0);
         }
 
-        .typewriter-text {
-            overflow: hidden;
-            border-right: 3px solid var(--terracotta);
-            white-space: nowrap;
-            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-            display: inline-block;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--terracotta) }
-        }
-
         .about-image {
             position: relative;
             opacity: 0;
@@ -440,7 +422,7 @@
             opacity: 0.9;
         }
 
-        /* Suites Section - Domino Effect Left to Right */
+        /* Suites Section */
         .suites {
             padding: 6rem 5%;
             background: var(--sand);
@@ -721,300 +703,349 @@
             background: white;
         }
 
-        .guest-selector {
+        /* NOVO: 3 categorias de hóspedes */
+        .guests-container {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .guest-btn {
-            width: 50px;
-            height: 50px;
+        .guest-type-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            background: white;
+            border: 2px solid var(--sand);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .guest-type-row:hover {
+            border-color: var(--amazon-green);
+            box-shadow: 0 4px 12px rgba(26, 60, 52, 0.08);
+        }
+
+        .guest-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .guest-label {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .guest-sublabel {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .guest-price-tag {
+            font-size: 0.75rem;
+            color: var(--terracotta);
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .guest-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .guest-btn-modern {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             border: 2px solid var(--amazon-green);
             background: white;
             color: var(--amazon-green);
-            font-size: 1.5rem;
+            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .guest-btn:hover {
+        .guest-btn-modern:hover:not(:disabled) {
             background: var(--amazon-green);
             color: white;
+            transform: scale(1.1);
         }
 
-        .guest-count {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
+        .guest-btn-modern:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            border-color: var(--text-light);
+            color: var(--text-light);
+        }
+
+        .guest-count-modern {
             font-weight: 700;
-            color: var(--amazon-green);
-            min-width: 80px;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            min-width: 25px;
             text-align: center;
         }
 
-        /* Booking Calendar Style */
-        .booking-calendar-container {
+        .guest-warning {
+            text-align: center;
+            color: var(--terracotta);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .guest-warning.show {
+            opacity: 1;
+        }
+
+        /* Calendário estilo Booking.com */
+        .booking-calendar-wrapper {
             background: white;
             border-radius: 20px;
             border: 2px solid var(--sand);
             overflow: hidden;
-            margin-bottom: 2rem;
         }
 
-        .calendar-header {
+        .calendar-header-booking {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem;
+            padding: 1.5rem 2rem;
             background: var(--sand);
-            border-bottom: 2px solid var(--sand);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .calendar-nav {
+        .calendar-nav-booking {
             background: white;
             border: none;
             width: 40px;
             height: 40px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--amazon-green);
             transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        .calendar-nav:hover {
+        .calendar-nav-booking:hover:not(:disabled) {
             background: var(--amazon-green);
             color: white;
+            transform: scale(1.1);
         }
 
-        .calendar-month-year {
+        .calendar-nav-booking:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .calendar-months-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .calendar-months-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem;
+            }
+        }
+
+        .calendar-month-box {
+            text-align: center;
+        }
+
+        .calendar-month-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--amazon-green);
+            margin-bottom: 1rem;
         }
 
-        .calendar-grid {
+        .calendar-grid-booking {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 1px;
-            background: var(--sand);
+            gap: 2px;
         }
 
-        .calendar-day-header {
-            background: white;
-            padding: 1rem 0.5rem;
+        .calendar-day-header-booking {
+            padding: 0.75rem 0.25rem;
             text-align: center;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-light);
             text-transform: uppercase;
         }
 
-        .calendar-day {
-            background: white;
-            min-height: 60px;
+        .calendar-day-booking {
+            aspect-ratio: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             font-weight: 500;
-            transition: all 0.3s;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            border-radius: 50%;
+            margin: 2px;
             position: relative;
         }
 
-        .calendar-day:hover:not(.disabled):not(.selected) {
+        .calendar-day-booking:hover:not(.disabled):not(.selected-start):not(.selected-end):not(.in-range) {
             background: var(--sand);
-        }
-
-        .calendar-day.disabled {
-            color: #ccc;
-            cursor: not-allowed;
-            background: #f9f9f9;
-        }
-
-        .calendar-day.selected {
-            background: var(--amazon-green);
-            color: white;
-        }
-
-        .calendar-day.checkin {
-            background: var(--amazon-green);
-            color: white;
-            border-radius: 50% 0 0 50%;
-        }
-
-        .calendar-day.checkout {
-            background: var(--amazon-green);
-            color: white;
-            border-radius: 0 50% 50% 0;
-        }
-
-        .calendar-day.in-range {
-            background: var(--amazon-light);
-            color: white;
-        }
-
-        .calendar-day.today {
-            font-weight: 700;
-            color: var(--terracotta);
-        }
-
-        .calendar-day .price {
-            position: absolute;
-            bottom: 2px;
-            font-size: 0.7rem;
-            opacity: 0.7;
-        }
-
-        .selected-dates-display {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--sand);
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-        }
-
-        .date-display-box {
-            text-align: center;
-            flex: 1;
-        }
-
-        .date-display-box label {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .date-display-box .date-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
             color: var(--amazon-green);
         }
 
-        .date-arrow {
-            font-size: 1.5rem;
-            color: var(--terracotta);
-            padding: 0 2rem;
+        .calendar-day-booking.disabled {
+            color: #ddd;
+            cursor: not-allowed;
+            text-decoration: line-through;
         }
 
-        /* Time Wheel - CORRIGIDO: Seleção no centro */
-        .time-wheels-container {
+        .calendar-day-booking.today {
+            font-weight: 700;
+            color: var(--terracotta);
+        }
+
+        .calendar-day-booking.selected-start,
+        .calendar-day-booking.selected-end {
+            background: var(--amazon-green);
+            color: white;
+            font-weight: 700;
+        }
+
+        .calendar-day-booking.in-range {
+            background: rgba(26, 60, 52, 0.1);
+            color: var(--amazon-green);
+            border-radius: 0;
+            margin: 0;
+        }
+
+        .calendar-day-booking.selected-start {
+            border-radius: 50% 0 0 50%;
+        }
+
+        .calendar-day-booking.selected-end {
+            border-radius: 0 50% 50% 0;
+        }
+
+        .selected-dates-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--amazon-green);
+            color: white;
+            padding: 1.25rem 2rem;
+            margin: 0 2rem 2rem;
+            border-radius: 12px;
+        }
+
+        .date-box {
+            text-align: center;
+        }
+
+        .date-box-label {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .date-box-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .date-box-arrow {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        /* Seletor de horário moderno */
+        .time-selector-modern {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             margin-bottom: 2rem;
         }
 
-        .time-wheel-wrapper {
+        @media (max-width: 768px) {
+            .time-selector-modern {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .time-box {
             text-align: center;
         }
 
-        .time-wheel-wrapper label {
+        .time-box-label {
             display: block;
             margin-bottom: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-dark);
             font-size: 1.1rem;
         }
 
-        .time-wheel {
-            height: 200px;
-            overflow-y: scroll;
-            position: relative;
-            background: white;
-            border-radius: 15px;
-            border: 2px solid var(--sand);
-            scroll-snap-type: y mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .time-wheel::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Gradiente superior e inferior para efeito de fade */
-        .time-wheel::before,
-        .time-wheel::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            height: 80px;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .time-wheel::before {
-            top: 0;
-            background: linear-gradient(to bottom, white, transparent);
-        }
-
-        .time-wheel::after {
-            bottom: 0;
-            background: linear-gradient(to top, white, transparent);
-        }
-
-        /* Padding para centralizar o primeiro e último item */
-        .time-wheel-inner {
-            padding: 80px 0;
-        }
-
-        .time-option-wheel {
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            color: var(--text-light);
-            cursor: pointer;
-            transition: all 0.3s;
-            scroll-snap-align: center;
-            user-select: none;
-        }
-
-        .time-option-wheel:hover {
-            color: var(--amazon-green);
+        .time-options-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            max-height: 280px;
+            overflow-y: auto;
+            padding: 0.5rem;
             background: var(--sand);
+            border-radius: 16px;
         }
 
-        /* Item selecionado - destacado no centro */
-        .time-option-wheel.selected {
+        .time-option-btn {
+            padding: 0.75rem 0.5rem;
+            border: 2px solid transparent;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .time-option-btn:hover {
+            border-color: var(--amazon-green);
             color: var(--amazon-green);
-            font-weight: 700;
-            font-size: 1.4rem;
-            background: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        /* Indicador visual do centro (opcional, para debug visual) */
-        .time-wheel-center {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            transform: translateY(-50%);
-            height: 40px;
-            border-top: 2px solid var(--terracotta);
-            border-bottom: 2px solid var(--terracotta);
-            pointer-events: none;
-            z-index: 1;
+        .time-option-btn.selected {
+            background: var(--amazon-green);
+            color: white;
+            border-color: var(--amazon-green);
+            font-weight: 700;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(26, 60, 52, 0.3);
         }
 
         .navigation-buttons {
@@ -1065,6 +1096,12 @@
 
         .btn-nav.prev:hover {
             transform: translateX(-5px);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
         }
 
         .summary-box {
@@ -1186,36 +1223,29 @@
                 bottom: -10px;
             }
 
-            .time-wheels-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
             .reservation-form {
                 padding: 2rem 1.5rem;
             }
 
-            .guest-selector {
-                gap: 1rem;
+            .selected-dates-bar {
+                margin: 0 1rem 1rem;
+                padding: 1rem;
             }
 
-            .guest-count {
-                font-size: 2.5rem;
+            .date-box-value {
+                font-size: 1.1rem;
             }
 
-            .selected-dates-display {
-                flex-direction: column;
-                gap: 1rem;
+            .time-options-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .date-arrow {
-                transform: rotate(90deg);
-                padding: 0;
+            .guest-type-row {
+                padding: 1rem;
             }
 
-            .calendar-day {
-                min-height: 45px;
-                font-size: 0.9rem;
+            .guest-label {
+                font-size: 1rem;
             }
 
             .whatsapp-float {
@@ -1284,7 +1314,7 @@
 
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <span class="hero-badge">Bem-vindo à Amazônia</span>
+            <span class="hero-badge">Bem-vindo à Pousada Muiraquitã</span>
             <h1>Descanse no Coração de Parintins</h1>
             <p>Experimente o verdadeiro charme amazônico com conforto, hospitalidade e tradição na Pousada Muiraquitã.</p>
             <a href="#reserva" class="btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">
@@ -1552,61 +1582,116 @@
                         <div class="step-dot" id="dot-4">4</div>
                     </div>
 
-                    <!-- Step 1: Guests -->
+                    <!-- Step 1: 3 Categorias de Hóspedes -->
                     <div class="step active" id="step-1">
-                        <div class="form-group" style="text-align: center;">
-                            <label>Quantas pessoas?</label>
-                            <div class="guest-selector">
-                                <button class="guest-btn" onclick="updateGuests(-1)">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <div class="guest-count" id="guest-count">2</div>
-                                <button class="guest-btn" onclick="updateGuests(1)">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                            <p style="color: var(--text-light); margin-top: 1rem;">
-                                <i class="fas fa-info-circle"></i>
-                                Selecione o número total de hóspedes
-                            </p>
+                        <div class="form-group" style="text-align: center; margin-bottom: 2rem;">
+                            <label style="font-size: 1.3rem; color: var(--amazon-green);">Quem vai hospedar?</label>
+                            <p style="color: var(--text-light); margin-top: 0.5rem;">Selecione o número de hóspedes por faixa etária</p>
                         </div>
+                        
+                        <div class="guests-container">
+                            <!-- Adultos (16+) -->
+                            <div class="guest-type-row">
+                                <div class="guest-info">
+                                    <span class="guest-label">Adultos</span>
+                                    <span class="guest-sublabel">16 anos ou mais</span>
+                                    <span class="guest-price-tag">Valor integral da diária</span>
+                                </div>
+                                <div class="guest-controls">
+                                    <button class="guest-btn-modern" onclick="updateGuest('adults', -1)" id="btn-adults-minus" disabled>
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="guest-count-modern" id="adults-count">0</span>
+                                    <button class="guest-btn-modern" onclick="updateGuest('adults', 1)">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Adolescentes (11-16) -->
+                            <div class="guest-type-row">
+                                <div class="guest-info">
+                                    <span class="guest-label">Adolescentes</span>
+                                    <span class="guest-sublabel">11 a 15 anos</span>
+                                    <span class="guest-price-tag">Taxa de R$ 40,00</span>
+                                </div>
+                                <div class="guest-controls">
+                                    <button class="guest-btn-modern" onclick="updateGuest('teens', -1)" id="btn-teens-minus" disabled>
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="guest-count-modern" id="teens-count">0</span>
+                                    <button class="guest-btn-modern" onclick="updateGuest('teens', 1)">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Crianças (0-10) -->
+                            <div class="guest-type-row">
+                                <div class="guest-info">
+                                    <span class="guest-label">Crianças</span>
+                                    <span class="guest-sublabel">Até 10 anos</span>
+                                    <span class="guest-price-tag">Não paga hospedagem</span>
+                                </div>
+                                <div class="guest-controls">
+                                    <button class="guest-btn-modern" onclick="updateGuest('children', -1)" id="btn-children-minus" disabled>
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="guest-count-modern" id="children-count">0</span>
+                                    <button class="guest-btn-modern" onclick="updateGuest('children', 1)">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="guest-warning" id="guest-warning">
+                            <i class="fas fa-exclamation-circle"></i> É necessário pelo menos 1 adulto para prosseguir
+                        </div>
+
                         <div class="navigation-buttons">
                             <div></div>
-                            <button class="btn-nav" onclick="nextStep()">
+                            <button class="btn-nav" onclick="nextStep()" id="btn-next-guests" disabled>
                                 Próximo
                                 <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Step 2: Dates (Booking Style) -->
+                    <!-- Step 2: Dates -->
                     <div class="step" id="step-2">
-                        <div class="selected-dates-display">
-                            <div class="date-display-box">
-                                <label>Check-in</label>
-                                <div class="date-value" id="display-checkin">Selecione</div>
+                        <div class="selected-dates-bar">
+                            <div class="date-box">
+                                <div class="date-box-label">Check-in</div>
+                                <div class="date-box-value" id="display-checkin">Selecione</div>
                             </div>
-                            <div class="date-arrow">
+                            <div class="date-box-arrow">
                                 <i class="fas fa-arrow-right"></i>
                             </div>
-                            <div class="date-display-box">
-                                <label>Check-out</label>
-                                <div class="date-value" id="display-checkout">Selecione</div>
+                            <div class="date-box">
+                                <div class="date-box-label">Check-out</div>
+                                <div class="date-box-value" id="display-checkout">Selecione</div>
                             </div>
                         </div>
 
-                        <div class="booking-calendar-container">
-                            <div class="calendar-header">
-                                <button class="calendar-nav" onclick="changeMonth(-1)">
+                        <div class="booking-calendar-wrapper">
+                            <div class="calendar-header-booking">
+                                <button class="calendar-nav-booking" onclick="changeMonth(-1)" id="prev-month">
                                     <i class="fas fa-chevron-left"></i>
                                 </button>
-                                <div class="calendar-month-year" id="calendar-month-year"></div>
-                                <button class="calendar-nav" onclick="changeMonth(1)">
+                                <div style="display: flex; gap: 2rem; align-items: center;">
+                                    <span style="font-weight: 600; color: var(--amazon-green);">
+                                        <i class="fas fa-calendar-alt" style="margin-right: 0.5rem;"></i>
+                                        Selecione as datas
+                                    </span>
+                                </div>
+                                <button class="calendar-nav-booking" onclick="changeMonth(1)" id="next-month">
                                     <i class="fas fa-chevron-right"></i>
                                 </button>
                             </div>
-                            <div class="calendar-grid" id="calendar-grid">
-                                <!-- Generated by JS -->
+                            
+                            <div class="calendar-months-container" id="calendar-container">
+                                <!-- Gerado por JS -->
                             </div>
                         </div>
 
@@ -1622,25 +1707,19 @@
                         </div>
                     </div>
 
-                    <!-- Step 3: Time Wheels - CORRIGIDO -->
+                    <!-- Step 3: Time -->
                     <div class="step" id="step-3">
-                        <div class="time-wheels-container">
-                            <div class="time-wheel-wrapper">
-                                <label>Horário de Check-in</label>
-                                <div class="time-wheel" id="checkin-wheel">
-                                    <div class="time-wheel-center"></div>
-                                    <div class="time-wheel-inner" id="checkin-wheel-inner">
-                                        <!-- Generated by JS -->
-                                    </div>
+                        <div class="time-selector-modern">
+                            <div class="time-box">
+                                <label class="time-box-label">Horário de Check-in</label>
+                                <div class="time-options-grid" id="checkin-times">
+                                    <!-- Gerado por JS -->
                                 </div>
                             </div>
-                            <div class="time-wheel-wrapper">
-                                <label>Horário de Check-out</label>
-                                <div class="time-wheel" id="checkout-wheel">
-                                    <div class="time-wheel-center"></div>
-                                    <div class="time-wheel-inner" id="checkout-wheel-inner">
-                                        <!-- Generated by JS -->
-                                    </div>
+                            <div class="time-box">
+                                <label class="time-box-label">Horário de Check-out</label>
+                                <div class="time-options-grid" id="checkout-times">
+                                    <!-- Gerado por JS -->
                                 </div>
                             </div>
                         </div>
@@ -1656,13 +1735,13 @@
                         </div>
                     </div>
 
-                    <!-- Step 4: Summary & Submit -->
+                    <!-- Step 4: Summary -->
                     <div class="step" id="step-4">
                         <div class="summary-box">
                             <h3 style="margin-bottom: 1.5rem; color: var(--amazon-green);">Resumo da Reserva</h3>
                             <div class="summary-item">
-                                <span class="summary-label">Número de Hóspedes</span>
-                                <span class="summary-value" id="summary-guests">2 pessoas</span>
+                                <span class="summary-label">Hóspedes</span>
+                                <span class="summary-value" id="summary-guests">-</span>
                             </div>
                             <div class="summary-item">
                                 <span class="summary-label">Data de Check-in</span>
@@ -1768,8 +1847,14 @@
     </footer>
 
     <script>
+        // NOVO: 3 categorias começando em 0
+        let guests = {
+            adults: 0,      // 16+ anos
+            teens: 0,       // 11-15 anos (taxa R$ 40)
+            children: 0     // 0-10 anos (não paga)
+        };
+        
         let currentStep = 1;
-        let guests = 2;
         let checkinDate = null;
         let checkoutDate = null;
         let checkinTime = '';
@@ -1780,16 +1865,16 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             initCalendar();
-            initTimeWheels();
+            initTimeSelector();
             initScrollAnimations();
+            updateGuestButtons();
         });
 
         // Scroll Animations
         function initScrollAnimations() {
-            // Feature cards - Right to Left (Domino inverted)
             const featureCards = document.querySelectorAll('.feature-card');
             const featureObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
+                entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         const delay = parseInt(entry.target.dataset.delay) * 150;
                         setTimeout(() => {
@@ -1801,7 +1886,6 @@
             
             featureCards.forEach(card => featureObserver.observe(card));
 
-            // About section - Typewriter effect
             const aboutParas = document.querySelectorAll('.typewriter-para');
             const aboutImage = document.querySelector('.about-image');
             const aboutBtn = document.getElementById('about-btn');
@@ -1829,7 +1913,6 @@
             aboutObserver.observe(aboutImage);
             aboutObserver.observe(aboutBtn);
 
-            // Suite cards - Left to Right (Domino)
             const suiteCards = document.querySelectorAll('.suite-card');
             const suiteObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1845,14 +1928,52 @@
             suiteCards.forEach(card => suiteObserver.observe(card));
         }
 
-        function updateGuests(change) {
-            guests += change;
-            if (guests < 1) guests = 1;
-            if (guests > 8) guests = 8;
-            document.getElementById('guest-count').textContent = guests;
+        // NOVO: Controle unificado de hóspedes
+        function updateGuest(type, change) {
+            guests[type] += change;
+            
+            // Limites
+            if (guests[type] < 0) guests[type] = 0;
+            if (guests[type] > 8) guests[type] = 8;
+            
+            // Adultos têm mínimo 0, mas precisa de pelo menos 1 para prosseguir
+            if (type === 'adults' && guests[type] < 0) guests[type] = 0;
+            
+            updateGuestButtons();
+        }
+
+        function updateGuestButtons() {
+            // Atualizar contadores visuais
+            document.getElementById('adults-count').textContent = guests.adults;
+            document.getElementById('teens-count').textContent = guests.teens;
+            document.getElementById('children-count').textContent = guests.children;
+            
+            // Atualizar estado dos botões
+            document.getElementById('btn-adults-minus').disabled = guests.adults <= 0;
+            document.getElementById('btn-teens-minus').disabled = guests.teens <= 0;
+            document.getElementById('btn-children-minus').disabled = guests.children <= 0;
+            
+            // Validar se pode prosseguir (mínimo 1 adulto)
+            const canProceed = guests.adults >= 1;
+            document.getElementById('btn-next-guests').disabled = !canProceed;
+            
+            // Mostrar/esconder aviso
+            const warning = document.getElementById('guest-warning');
+            if (guests.adults === 0 && (guests.teens > 0 || guests.children > 0)) {
+                warning.classList.add('show');
+            } else {
+                warning.classList.remove('show');
+            }
         }
 
         function nextStep() {
+            if (currentStep === 1) {
+                if (guests.adults < 1) {
+                    alert('É necessário pelo menos 1 adulto (16+ anos) para fazer a reserva.');
+                    return;
+                }
+            }
+
             if (currentStep === 2) {
                 if (!checkinDate || !checkoutDate) {
                     alert('Por favor, selecione as datas de check-in e check-out.');
@@ -1894,73 +2015,93 @@
             document.getElementById(`dot-${currentStep}`).classList.add('active');
         }
 
-        // Calendar Functions
+        // Calendário
         function initCalendar() {
             renderCalendar();
         }
 
         function renderCalendar() {
-            const year = currentMonth.getFullYear();
-            const month = currentMonth.getMonth();
+            const container = document.getElementById('calendar-container');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < 2; i++) {
+                const monthDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + i, 1);
+                const monthDiv = createMonthCalendar(monthDate, i);
+                container.appendChild(monthDiv);
+            }
+            
+            const today = new Date();
+            today.setDate(1);
+            document.getElementById('prev-month').disabled = currentMonth <= today;
+        }
+
+        function createMonthCalendar(date, index) {
+            const year = date.getFullYear();
+            const month = date.getMonth();
             const firstDay = new Date(year, month, 1).getDay();
             const daysInMonth = new Date(year, month + 1, 0).getDate();
             
             const monthNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
                                'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
             
-            document.getElementById('calendar-month-year').textContent = `${monthNames[month]} ${year}`;
+            const monthBox = document.createElement('div');
+            monthBox.className = 'calendar-month-box';
             
-            const grid = document.getElementById('calendar-grid');
-            grid.innerHTML = '';
+            const title = document.createElement('div');
+            title.className = 'calendar-month-title';
+            title.textContent = `${monthNames[month]} ${year}`;
+            monthBox.appendChild(title);
             
-            // Day headers
+            const grid = document.createElement('div');
+            grid.className = 'calendar-grid-booking';
+            
             const dayHeaders = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
             dayHeaders.forEach(day => {
                 const header = document.createElement('div');
-                header.className = 'calendar-day-header';
+                header.className = 'calendar-day-header-booking';
                 header.textContent = day;
                 grid.appendChild(header);
             });
             
-            // Empty cells
             for (let i = 0; i < firstDay; i++) {
                 const empty = document.createElement('div');
-                empty.className = 'calendar-day disabled';
+                empty.className = 'calendar-day-booking disabled';
                 grid.appendChild(empty);
             }
             
-            // Days
             const today = new Date();
             today.setHours(0, 0, 0, 0);
             
             for (let day = 1; day <= daysInMonth; day++) {
-                const date = new Date(year, month, day);
+                const currentDate = new Date(year, month, day);
                 const cell = document.createElement('div');
-                cell.className = 'calendar-day';
+                cell.className = 'calendar-day-booking';
                 cell.textContent = day;
                 
-                if (date < today) {
+                if (currentDate < today) {
                     cell.classList.add('disabled');
                 } else {
-                    cell.onclick = () => selectDate(date);
+                    cell.onclick = () => selectDate(currentDate);
                     
-                    // Check if selected
-                    if (checkinDate && date.getTime() === checkinDate.getTime()) {
-                        cell.classList.add('checkin');
+                    if (checkinDate && currentDate.getTime() === checkinDate.getTime()) {
+                        cell.classList.add('selected-start');
                     }
-                    if (checkoutDate && date.getTime() === checkoutDate.getTime()) {
-                        cell.classList.add('checkout');
+                    if (checkoutDate && currentDate.getTime() === checkoutDate.getTime()) {
+                        cell.classList.add('selected-end');
                     }
-                    if (checkinDate && checkoutDate && date > checkinDate && date < checkoutDate) {
+                    if (checkinDate && checkoutDate && currentDate > checkinDate && currentDate < checkoutDate) {
                         cell.classList.add('in-range');
                     }
-                    if (date.getTime() === today.getTime()) {
+                    if (currentDate.getTime() === today.getTime()) {
                         cell.classList.add('today');
                     }
                 }
                 
                 grid.appendChild(cell);
             }
+            
+            monthBox.appendChild(grid);
+            return monthBox;
         }
 
         function changeMonth(delta) {
@@ -1973,110 +2114,101 @@
                 checkinDate = date;
                 checkoutDate = null;
                 selectingCheckin = false;
-                document.getElementById('display-checkin').textContent = formatDateBR(date);
+                document.getElementById('display-checkin').textContent = formatDateShort(date);
                 document.getElementById('display-checkout').textContent = 'Selecione';
             } else {
                 if (date <= checkinDate) {
-                    alert('A data de check-out deve ser posterior ao check-in.');
-                    return;
+                    checkinDate = date;
+                    checkoutDate = null;
+                    document.getElementById('display-checkin').textContent = formatDateShort(date);
+                    document.getElementById('display-checkout').textContent = 'Selecione';
+                } else {
+                    checkoutDate = date;
+                    selectingCheckin = true;
+                    document.getElementById('display-checkout').textContent = formatDateShort(date);
                 }
-                checkoutDate = date;
-                document.getElementById('display-checkout').textContent = formatDateBR(date);
-                selectingCheckin = true;
             }
             renderCalendar();
+        }
+
+        function formatDateShort(date) {
+            const days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+            const months = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+            return `${days[date.getDay()]}, ${date.getDate()} ${months[date.getMonth()]}`;
         }
 
         function formatDateBR(date) {
             return date.toLocaleDateString('pt-BR');
         }
 
-        // Time Wheel Functions - CORRIGIDO: Seleção centralizada
-        function initTimeWheels() {
-            const checkinWheel = document.getElementById('checkin-wheel-inner');
-            const checkoutWheel = document.getElementById('checkout-wheel-inner');
+        // Seletor de horário
+        function initTimeSelector() {
+            const checkinContainer = document.getElementById('checkin-times');
+            const checkoutContainer = document.getElementById('checkout-times');
             
-            // Generate hours from 00:00 to 23:00
-            for (let i = 0; i < 24; i++) {
-                const time = `${i.toString().padStart(2, '0')}:00`;
-                
-                const checkinOption = createTimeOption(time, 'checkin');
-                checkinWheel.appendChild(checkinOption);
-                
-                const checkoutOption = createTimeOption(time, 'checkout');
-                checkoutWheel.appendChild(checkoutOption);
+            const checkinHours = [];
+            const checkoutHours = [];
+            
+            for (let i = 14; i <= 23; i++) {
+                checkinHours.push(`${i.toString().padStart(2, '0')}:00`);
             }
             
-            // Setup scroll listeners com cálculo correto do centro
-            setupWheelScroll('checkin-wheel', 'checkin');
-            setupWheelScroll('checkout-wheel', 'checkout');
-        }
-
-        function createTimeOption(time, type) {
-            const div = document.createElement('div');
-            div.className = 'time-option-wheel';
-            div.textContent = time;
-            div.dataset.time = time;
-            return div;
-        }
-
-        function setupWheelScroll(wheelId, type) {
-            const wheel = document.getElementById(wheelId);
-            let isScrolling;
+            for (let i = 6; i <= 12; i++) {
+                checkoutHours.push(`${i.toString().padStart(2, '0')}:00`);
+            }
             
-            wheel.addEventListener('scroll', () => {
-                clearTimeout(isScrolling);
-                isScrolling = setTimeout(() => {
-                    updateWheelSelection(wheel, type);
-                }, 50);
+            checkinHours.forEach(time => {
+                const btn = createTimeButton(time, 'checkin');
+                checkinContainer.appendChild(btn);
             });
             
-            // Atualização em tempo real durante o scroll
-            wheel.addEventListener('scroll', () => {
-                requestAnimationFrame(() => {
-                    updateWheelSelection(wheel, type);
-                });
+            checkoutHours.forEach(time => {
+                const btn = createTimeButton(time, 'checkout');
+                checkoutContainer.appendChild(btn);
             });
             
-            // Seleção inicial - scroll para o meio (12:00 por padrão)
             setTimeout(() => {
-                const itemHeight = 40;
-                const defaultIndex = 20; // 20:00 como padrão (conforme imagem)
-                const centerOffset = wheel.offsetHeight / 2;
-                const scrollPosition = (defaultIndex * itemHeight) - centerOffset + (itemHeight / 2);
-                
-                wheel.scrollTop = scrollPosition;
-                updateWheelSelection(wheel, type);
+                selectTime('15:00', 'checkin');
+                selectTime('11:00', 'checkout');
             }, 100);
         }
 
-        function updateWheelSelection(wheel, type) {
-            const scrollTop = wheel.scrollTop;
-            const itemHeight = 40;
-            const centerOffset = wheel.offsetHeight / 2;
-            
-            // Cálculo correto: qual item está no centro da roleta
-            const selectedIndex = Math.round((scrollTop + centerOffset - itemHeight / 2) / itemHeight);
-            const options = wheel.querySelectorAll('.time-option-wheel');
-            
-            // Garantir que o índice está dentro dos limites
-            if (selectedIndex < 0 || selectedIndex >= options.length) return;
-            
-            options.forEach((opt, idx) => {
-                opt.classList.remove('selected');
-                if (idx === selectedIndex) {
-                    opt.classList.add('selected');
-                    if (type === 'checkin') {
-                        checkinTime = opt.dataset.time;
-                    } else {
-                        checkoutTime = opt.dataset.time;
-                    }
-                }
-            });
+        function createTimeButton(time, type) {
+            const btn = document.createElement('button');
+            btn.className = 'time-option-btn';
+            btn.textContent = time;
+            btn.dataset.time = time;
+            btn.onclick = () => selectTime(time, type);
+            return btn;
         }
 
+        function selectTime(time, type) {
+            if (type === 'checkin') {
+                checkinTime = time;
+                document.querySelectorAll('#checkin-times .time-option-btn').forEach(btn => {
+                    btn.classList.toggle('selected', btn.dataset.time === time);
+                });
+            } else {
+                checkoutTime = time;
+                document.querySelectorAll('#checkout-times .time-option-btn').forEach(btn => {
+                    btn.classList.toggle('selected', btn.dataset.time === time);
+                });
+            }
+        }
+
+        // NOVO: Resumo e mensagem WhatsApp formatada
         function updateSummary() {
-            document.getElementById('summary-guests').textContent = guests + (guests === 1 ? ' pessoa' : ' pessoas');
+            const totalGuests = guests.adults + guests.teens + guests.children;
+            
+            // Montar texto do resumo
+            let summaryText = '';
+            const parts = [];
+            if (guests.adults > 0) parts.push(`${guests.adults} adulto${guests.adults !== 1 ? 's' : ''}`);
+            if (guests.teens > 0) parts.push(`${guests.teens} adolescente${guests.teens !== 1 ? 's' : ''}`);
+            if (guests.children > 0) parts.push(`${guests.children} criança${guests.children !== 1 ? 's' : ''}`);
+            summaryText = parts.join(' + ');
+            
+            document.getElementById('summary-guests').textContent = summaryText;
             document.getElementById('summary-checkin').textContent = formatDateBR(checkinDate);
             document.getElementById('summary-checkout').textContent = formatDateBR(checkoutDate);
             document.getElementById('summary-checkin-time').textContent = checkinTime;
@@ -2091,9 +2223,29 @@
                 return;
             }
 
+            const totalGuests = guests.adults + guests.teens + guests.children;
+            
+            // NOVO: Mensagem WhatsApp organizada por categorias
+            let guestDetails = [];
+            
+            if (guests.adults > 0) {
+                guestDetails.push(`${guests.adults} Adulto${guests.adults !== 1 ? 's' : ''} (Acima de 16 anos paga o valor de 1 pessoa)`);
+            }
+            
+            if (guests.teens > 0) {
+                guestDetails.push(`${guests.teens} Adolescente${guests.teens !== 1 ? 's' : ''} (11 anos até 16 anos paga taxa de R$ 40,00)`);
+            }
+            
+            if (guests.children > 0) {
+                guestDetails.push(`${guests.children} Criança${guests.children !== 1 ? 's' : ''} (Até 10 anos não paga nada)`);
+            }
+            
+            const guestMessage = guestDetails.join('%0A• ');
+
             const message = `*Nova Reserva - Pousada Muiraquitã*%0A%0A` +
                            `*Nome:* ${name}%0A` +
-                           `*Hóspedes:* ${guests} ${guests === 1 ? 'pessoa' : 'pessoas'}%0A` +
+                           `*Total de Hóspedes:* ${totalGuests}%0A` +
+                           `*Detalhamento:*%0A• ${guestMessage}%0A%0A` +
                            `*Check-in:* ${formatDateBR(checkinDate)} às ${checkinTime}%0A` +
                            `*Check-out:* ${formatDateBR(checkoutDate)} às ${checkoutTime}%0A%0A` +
                            `Aguardo confirmação de disponibilidade.`;
@@ -2101,11 +2253,9 @@
             const phone = '5595991243617';
             const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
             
-            // Show success step
             document.getElementById('step-4').classList.remove('active');
             document.getElementById('step-success').classList.add('active');
             
-            // Open WhatsApp in same tab after delay
             setTimeout(() => {
                 window.location.href = whatsappUrl;
             }, 1500);
@@ -2119,20 +2269,28 @@
         }
 
         function resetForm() {
+            // Resetar todas as variáveis
+            guests = { adults: 0, teens: 0, children: 0 };
             currentStep = 1;
-            guests = 2;
             checkinDate = null;
             checkoutDate = null;
             checkinTime = '';
             checkoutTime = '';
             selectingCheckin = true;
+            currentMonth = new Date();
             
-            document.getElementById('guest-count').textContent = '2';
+            // Resetar UI
+            document.getElementById('adults-count').textContent = '0';
+            document.getElementById('teens-count').textContent = '0';
+            document.getElementById('children-count').textContent = '0';
+            
+            updateGuestButtons();
+            
             document.getElementById('display-checkin').textContent = 'Selecione';
             document.getElementById('display-checkout').textContent = 'Selecione';
             document.getElementById('guest-name').value = '';
             
-            document.querySelectorAll('.time-option-wheel').forEach(o => o.classList.remove('selected'));
+            document.querySelectorAll('.time-option-btn').forEach(btn => btn.classList.remove('selected'));
             
             document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.step-dot').forEach(d => {
@@ -2143,40 +2301,23 @@
             document.getElementById('dot-1').classList.add('active');
             
             renderCalendar();
-            
-            // Reset time wheels
-            setTimeout(() => {
-                const checkinWheel = document.getElementById('checkin-wheel');
-                const checkoutWheel = document.getElementById('checkout-wheel');
-                const itemHeight = 40;
-                const defaultIndex = 20;
-                const centerOffset = checkinWheel.offsetHeight / 2;
-                const scrollPosition = (defaultIndex * itemHeight) - centerOffset + (itemHeight / 2);
-                
-                checkinWheel.scrollTop = scrollPosition;
-                checkoutWheel.scrollTop = scrollPosition;
-            }, 100);
+            initTimeSelector();
         }
 
-        // Suite Toggle - Fixed bug
         function toggleSuite(card) {
             const isExpanded = card.classList.contains('expanded');
             const allCards = document.querySelectorAll('.suite-card');
             
-            // Close all cards first
             allCards.forEach(c => {
                 c.classList.remove('expanded');
                 c.style.gridRow = '';
             });
             
-            // If clicking the same expanded card, just close it (already done above)
-            // If clicking a different card or closed card, expand it
             if (!isExpanded) {
                 card.classList.add('expanded');
             }
         }
 
-        // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             if (window.scrollY > 100) {
