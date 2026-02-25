@@ -913,7 +913,7 @@
             padding: 0 2rem;
         }
 
-        /* Time Wheel - Fixed */
+        /* Time Wheel - CORRIGIDO: Seleção no centro */
         .time-wheels-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -950,6 +950,7 @@
             display: none;
         }
 
+        /* Gradiente superior e inferior para efeito de fade */
         .time-wheel::before,
         .time-wheel::after {
             content: '';
@@ -971,6 +972,7 @@
             background: linear-gradient(to top, white, transparent);
         }
 
+        /* Padding para centralizar o primeiro e último item */
         .time-wheel-inner {
             padding: 80px 0;
         }
@@ -980,7 +982,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-light);
             cursor: pointer;
             transition: all 0.3s;
@@ -993,13 +995,15 @@
             background: var(--sand);
         }
 
+        /* Item selecionado - destacado no centro */
         .time-option-wheel.selected {
             color: var(--amazon-green);
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             background: transparent;
         }
 
+        /* Indicador visual do centro (opcional, para debug visual) */
         .time-wheel-center {
             position: absolute;
             top: 50%;
@@ -1618,7 +1622,7 @@
                         </div>
                     </div>
 
-                    <!-- Step 3: Time Wheels - Fixed -->
+                    <!-- Step 3: Time Wheels - CORRIGIDO -->
                     <div class="step" id="step-3">
                         <div class="time-wheels-container">
                             <div class="time-wheel-wrapper">
@@ -1987,7 +1991,7 @@
             return date.toLocaleDateString('pt-BR');
         }
 
-        // Time Wheel Functions - Fixed with proper scrolling
+        // Time Wheel Functions - CORRIGIDO: Seleção centralizada
         function initTimeWheels() {
             const checkinWheel = document.getElementById('checkin-wheel-inner');
             const checkoutWheel = document.getElementById('checkout-wheel-inner');
@@ -2003,7 +2007,7 @@
                 checkoutWheel.appendChild(checkoutOption);
             }
             
-            // Setup scroll listeners with proper handling
+            // Setup scroll listeners com cálculo correto do centro
             setupWheelScroll('checkin-wheel', 'checkin');
             setupWheelScroll('checkout-wheel', 'checkout');
         }
@@ -2027,15 +2031,21 @@
                 }, 50);
             });
             
-            // Also update on scroll start for smoother feel
+            // Atualização em tempo real durante o scroll
             wheel.addEventListener('scroll', () => {
                 requestAnimationFrame(() => {
                     updateWheelSelection(wheel, type);
                 });
             });
             
-            // Initial selection
+            // Seleção inicial - scroll para o meio (12:00 por padrão)
             setTimeout(() => {
+                const itemHeight = 40;
+                const defaultIndex = 20; // 20:00 como padrão (conforme imagem)
+                const centerOffset = wheel.offsetHeight / 2;
+                const scrollPosition = (defaultIndex * itemHeight) - centerOffset + (itemHeight / 2);
+                
+                wheel.scrollTop = scrollPosition;
                 updateWheelSelection(wheel, type);
             }, 100);
         }
@@ -2044,8 +2054,13 @@
             const scrollTop = wheel.scrollTop;
             const itemHeight = 40;
             const centerOffset = wheel.offsetHeight / 2;
+            
+            // Cálculo correto: qual item está no centro da roleta
             const selectedIndex = Math.round((scrollTop + centerOffset - itemHeight / 2) / itemHeight);
             const options = wheel.querySelectorAll('.time-option-wheel');
+            
+            // Garantir que o índice está dentro dos limites
+            if (selectedIndex < 0 || selectedIndex >= options.length) return;
             
             options.forEach((opt, idx) => {
                 opt.classList.remove('selected');
@@ -2128,6 +2143,19 @@
             document.getElementById('dot-1').classList.add('active');
             
             renderCalendar();
+            
+            // Reset time wheels
+            setTimeout(() => {
+                const checkinWheel = document.getElementById('checkin-wheel');
+                const checkoutWheel = document.getElementById('checkout-wheel');
+                const itemHeight = 40;
+                const defaultIndex = 20;
+                const centerOffset = checkinWheel.offsetHeight / 2;
+                const scrollPosition = (defaultIndex * itemHeight) - centerOffset + (itemHeight / 2);
+                
+                checkinWheel.scrollTop = scrollPosition;
+                checkoutWheel.scrollTop = scrollPosition;
+            }, 100);
         }
 
         // Suite Toggle - Fixed bug
